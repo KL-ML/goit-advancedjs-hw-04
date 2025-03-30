@@ -1,0 +1,39 @@
+.header {
+  padding: 20px 0;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-title {
+  text-align: right;
+}
+.header-title-gradient {
+  display: block;
+  font-size: 1em;
+  font-weight: 700;
+  background-image: linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+@media only screen and (min-width: 768px) {
+  .header-title-gradient {
+    font-size: 1.2em;
+  }
+}
+.header-text {
+  font-size: 0.6em;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+@media only screen and (min-width: 768px) {
+  .header-text {
+    font-size: 0.7em;
+  }
+}
