@@ -2,10 +2,12 @@
     margin: 32px auto 0;
 }
 .end-message {
+    font-weight: 400;
     color: var(--text-color);
     background-color: var(--bg-white-color);
 }
 .end-message:hover {
+    font-weight: 400;
     color: var(--text-color);
     background-color: var(--bg-white-color);
     cursor: default;
