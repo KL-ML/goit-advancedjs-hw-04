@@ -24,7 +24,8 @@ async function onSubmitForm(event) {
   loadMoreButton.hide();
   resetGallery();
   renderLoader();
-  searchParams.q = query;
+    searchParams.q = query;
+    searchParams.page = 1;
   try {
     const photos = await getPhotos();
     if (photos.total === 0) {
@@ -57,19 +58,25 @@ async function onSubmitForm(event) {
 }
 
 async function onLoadMoreClick() {
-  loadMoreButton.disable();
-  searchParams.page += 1;
+    loadMoreButton.disable();
+    loadMoreButton.hide();
+    renderLoader();
+    searchParams.page += 1;
 
   try {
     const photos = await getPhotos(searchParams);
-    loadMoreButton.hide();
-    renderGallery(photos);
-    scrollByPage();
+      resetLoader();
+      renderGallery(photos);
+      
+      scrollByPage();
+      
     if (searchParams.page === Math.ceil(photos.totalHits / 15)) {
       loadMoreButton.hide();
     } else {
+        resetLoader();
       loadMoreButton.enable();
-      loadMoreButton.show();
+        loadMoreButton.show();
+        
     }
   } catch (err) {
     errorAllert(`Error ${err}`);
