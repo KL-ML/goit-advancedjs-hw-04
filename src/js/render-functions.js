@@ -1,7 +1,7 @@
-// функції для відображення елементів інтерфейсу.
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 const gallery = document.querySelector('.gallery');
+const loader = document.querySelector('.loader-wraper');
 
 function renderGallery(images) {
   const markup = images.hits
@@ -51,11 +51,28 @@ function resetGallery() {
 }
 
 function renderLoader() {
-  gallery.innerHTML = '<span class="loader"></span>';
+  loader.classList.add('active');
 }
 
 function resetLoader() {
-  gallery.innerHTML = '';
+  loader.classList.remove('active');
 }
 
-export { renderGallery, resetGallery, renderLoader, resetLoader };
+function scrollByPage() {
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
+}
+
+export {
+  renderGallery,
+  resetGallery,
+  renderLoader,
+  resetLoader,
+  scrollByPage,
+};
