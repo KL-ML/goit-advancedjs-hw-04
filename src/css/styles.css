@@ -9,6 +9,7 @@
 @import url('./base.css');
 @import url('./container.css');
 @import url('./animations.css');
+@import url('./btn.css');
 
 /* Sections style */
 @import url('./header.css');
@@ -16,4 +17,5 @@
 @import url('./search-form.css');
 @import url('./gallery.css');
 @import url('./loader.css');
+@import url('./load-more-btn.css');
 @import url('./footer.css');
