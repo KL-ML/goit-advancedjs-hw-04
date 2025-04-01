@@ -1,4 +1,3 @@
-// const searchForm = document.querySelector('.search-form');
 const LOCALSTORAGE_KEY = 'search-form-state';
 
 function setInputDataToLocalStorage(event) {
