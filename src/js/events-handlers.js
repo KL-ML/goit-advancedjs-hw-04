@@ -70,7 +70,6 @@ async function onLoadMoreClick() {
     const photos = await getPhotos(searchParams);
     resetLoader();
     renderGallery(photos);
-
     scrollByPage();
 
     if (searchParams.page === Math.ceil(photos.totalHits / 15)) {
