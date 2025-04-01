@@ -3,6 +3,11 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader-wraper');
 
+let simpleLB = new SimpleLightbox('ul.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
 function renderGallery(images) {
   const markup = images.hits
     .map(
@@ -40,10 +45,7 @@ function renderGallery(images) {
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
-  new SimpleLightbox('ul.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  }).refresh();
+  simpleLB.refresh();
 }
 
 function resetGallery() {
