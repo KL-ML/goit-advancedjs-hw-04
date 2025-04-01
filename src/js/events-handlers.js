@@ -22,10 +22,11 @@ async function onSubmitForm(event) {
   }
   loadMoreButton.disable();
   loadMoreButton.hide();
+
   resetGallery();
   renderLoader();
-    searchParams.q = query;
-    searchParams.page = 1;
+  searchParams.q = query;
+  searchParams.page = 1;
   try {
     const photos = await getPhotos();
     if (photos.total === 0) {
@@ -41,8 +42,10 @@ async function onSubmitForm(event) {
     resetLoader();
     renderGallery(photos);
     if (searchParams.page === Math.ceil(photos.totalHits / 15)) {
-      loadMoreButton.hide();
+      loadMoreButton.show();
+      loadMoreButton.addEndCollectionMessage();
     } else {
+      loadMoreButton.removeEndCollectionMessage();
       loadMoreButton.enable();
       loadMoreButton.show();
       loadMoreButton.button.addEventListener('click', onLoadMoreClick);
@@ -58,25 +61,26 @@ async function onSubmitForm(event) {
 }
 
 async function onLoadMoreClick() {
-    loadMoreButton.disable();
-    loadMoreButton.hide();
-    renderLoader();
-    searchParams.page += 1;
+  loadMoreButton.disable();
+  loadMoreButton.hide();
+  renderLoader();
+  searchParams.page += 1;
 
   try {
     const photos = await getPhotos(searchParams);
-      resetLoader();
-      renderGallery(photos);
-      
-      scrollByPage();
-      
+    resetLoader();
+    renderGallery(photos);
+
+    scrollByPage();
+
     if (searchParams.page === Math.ceil(photos.totalHits / 15)) {
-      loadMoreButton.hide();
+      loadMoreButton.addEndCollectionMessage();
+      loadMoreButton.show();
     } else {
-        resetLoader();
+      loadMoreButton.removeEndCollectionMessage();
+      resetLoader();
       loadMoreButton.enable();
-        loadMoreButton.show();
-        
+      loadMoreButton.show();
     }
   } catch (err) {
     errorAllert(`Error ${err}`);
